@@ -1,0 +1,5 @@
+python-dotenv
+tweepy
+langchain
+langchain-openai
+google-api-python-client
