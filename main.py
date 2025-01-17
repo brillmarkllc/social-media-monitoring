@@ -107,6 +107,7 @@ def generate_report(mentions, summary):
 
 def job():
     keyword = 'Brillmark'
+    print("Generating Report...")
     mentions = collect_all_mentions(keyword)
     mentions = process_mentions(mentions)
     summary = summarize_mentions(mentions)
