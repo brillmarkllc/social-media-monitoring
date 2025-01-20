@@ -1,5 +1,7 @@
+pandas
 python-dotenv
-tweepy
+asyncpraw
+telethon
 langchain
 langchain-openai
 google-api-python-client

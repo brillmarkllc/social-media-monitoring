@@ -1,42 +1,46 @@
-import tweepy
-from langchain_openai import ChatOpenAI
+from dataclasses import dataclass
 from dotenv import load_dotenv
-from prompts.sentiment import sentiment_prompt
-from prompts.summarize import summarize_prompt
+from typing import List
 import os
 
 
 load_dotenv()
 
 
-# Twitter API credentials
-TWITTER_API_KEY = os.environ.get('TWITTER_API_KEY')
-TWITTER_API_KEY_SECRET = os.environ.get('TWITTER_API_KEY_SECRET')
-TWITTER_ACCESS_TOKEN = os.environ.get('TWITTER_ACCESS_TOKEN')
-TWITTER_ACCESS_TOKEN_SECRET = os.environ.get('TWITTER_ACCESS_TOKEN_SECRET')
+@dataclass
+class Config:
+    GOOGLE_API_KEY: str = os.environ.get('GOOGLE_API_KEY')
+    SEARCH_ENGINE_ID: str = os.environ.get('SEARCH_ENGINE_ID')
+    YOUTUBE_API_KEY: str = os.environ.get('YOUTUBE_API_KEY')
+    STACKEXCHANGE_KEY: str = os.environ.get('STACKEXCHANGE_KEY')
+    OPENAI_API_KEY: str = os.environ.get('OPENAI_API_KEY')
+    GITHUB_TOKEN: str = os.environ.get('GITHUB_TOKEN')
+    REDDIT_CLIENT_ID: str = "your_reddit_client_id"
+    REDDIT_CLIENT_SECRET: str = "your_reddit_client_secret"
+    REDDIT_USER_AGENT: str = "keyword_analyzer_bot/1.0"
+    MASTODON_ACCESS_TOKEN: str = "your_mastodon_access_token"
+    MASTODON_INSTANCE: str = "mastodon.social"  # or your preferred instance
+    HN_API_KEY: str = "your_hn_api_key"
+    OUTPUT_DIR: str = "output"
 
+    WIKIPEDIA_ACCESS_TOKEN: str = os.environ.get('WIKIPEDIA_ACCESS_TOKEN')  # Optional
+    WIKIPEDIA_CLIENT_SECRET: str = os.environ.get('WIKIPEDIA_CLIENT_SECRET')  # Optional
+    WIKIPEDIA_LANGUAGE: str = "en"  # Default language
 
-# Initialize the Twitter API
-auth = tweepy.OAuth1UserHandler(TWITTER_API_KEY, 
-                                TWITTER_API_KEY_SECRET, 
-                                TWITTER_ACCESS_TOKEN, 
-                                TWITTER_ACCESS_TOKEN_SECRET)
-api = tweepy.API(auth)
+    CURRENT_NEWS_API_KEY: str = os.environ.get('CURRENT_NEWS_API_KEY')
+    CURRENT_NEWS_LANGUAGE: str = "en"  # Default language
 
+    TELEGRAM_BOT_TOKEN: str = "your_telegram_bot_token"
+    TELEGRAM_SEARCH_CHANNELS: List[str] = None  # List of channel/group usernames to search
 
-# Google API credentials
-GOOGLE_API_KEY = os.environ.get('GOOGLE_API_KEY')
-SEARCH_ENGINE_ID = os.environ.get('SEARCH_ENGINE_ID')
-
-
-# OpenAI API credentials
-OPENAI_API_KEY = os.environ.get('OPENAI_API_KEY')
-
-# Initialize the OpenAI LLM with GPT-4o
-llm = ChatOpenAI(temperature=0,
-                api_key=OPENAI_API_KEY,
-                model='gpt-4o')
-
-# Define the llm chains
-sentiment_chain = sentiment_prompt | llm
-summarize_chain = summarize_prompt | llm
+    def __post_init__(self):
+        # Default public channels/groups to search if none specified
+        if self.TELEGRAM_SEARCH_CHANNELS is None:
+            self.TELEGRAM_SEARCH_CHANNELS = [
+                "cryptocurrency",
+                "pythonprogramming",
+                "machinelearning",
+                "technology",
+                "startup",
+                # Add more default channels as needed
+            ]

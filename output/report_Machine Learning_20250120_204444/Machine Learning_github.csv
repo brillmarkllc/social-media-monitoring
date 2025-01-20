@@ -1,0 +1,11 @@
+﻿Title,Description,URL,Date,Sentiment
+mase,Machine-Learning Accelerator System Exploration Tools,https://github.com/DeepWok/mase,2023-12-18 12:50:53,NEUTRAL
+LOG-MONITORING-AND-ANALYSIS,"This is an advanced web application designed for real-time log monitoring and analysis. Built with Django, it leverages cutting-edge machine learning techniques to detect anomalies in logs, providing robust security and operational insights.",https://github.com/MarkNgugi/LOG-MONITORING-AND-ANALYSIS,2024-06-19 06:32:49,POSITIVE
+pygents,Machine Learning experiments in Python for Aigents project,https://github.com/aigents/pygents,2022-03-16 04:21:03,NEUTRAL
+Flight-Price-Prediction-and-Customer-Satisfaction-ML,"This project predicts flight prices and customer satisfaction using machine learning models. It includes two Streamlit apps for real-time predictions, with MLflow integration for model tracking and performance monitoring.",https://github.com/dukejacks/Flight-Price-Prediction-and-Customer-Satisfaction-ML,2025-01-16 15:47:33,NEUTRAL
+Simd,"C++ image processing and machine learning library with using of SIMD: SSE, AVX, AVX-512, AMX  for x86/x64, NEON for ARM.",https://github.com/ermig1979/Simd,2015-03-25 15:24:55,NEUTRAL
+Fw community mgmt,,https://github.com/security-alliance/frameworks/pull/95,2025-01-18 04:27:24,NEUTRAL
+Remove child/parent image support,,https://github.com/nrfconnect/sdk-nrf/pull/19283,2024-12-05 10:39:09,NEUTRAL
+[pull] main from mdn:main,,https://github.com/cogor/translated-content/pull/302,2022-02-22 06:57:50,NEUTRAL
+📚 Inaccurate pre-trained model predictions master thread,,https://github.com/explosion/spaCy/issues/3052,2018-12-14 11:11:47,NEUTRAL
+Renovate Dashboard,,https://github.com/truxnell/nix-config/issues/17,2024-03-26 11:42:03,NEUTRAL
