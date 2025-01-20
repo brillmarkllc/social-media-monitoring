@@ -14,7 +14,7 @@ class StackExchange(Platform):
     async def fetch_mentions(self, keyword: str) -> List[Mention]:
         async with aiohttp.ClientSession() as session:
             params = {
-                'site': 'travel',
+                'site': 'stackoverflow',
                 'key': self.config.STACKEXCHANGE_KEY,
                 'intitle': keyword,
                 'pagesize': 10,

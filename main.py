@@ -8,11 +8,11 @@ from platforms.google_search import GoogleSearch
 from platforms.youtube import YouTube
 from platforms.stackexchange import StackExchange
 from platforms.github import GitHub
+from platforms.hackernews import HackerNews
+from platforms.current_news import CurrentNews
 # from platforms.reddit import Reddit
 # from platforms.mastodon import Mastodon
-from platforms.hackernews import HackerNews
 # from platforms.wikipedia import Wikipedia
-from platforms.current_news import CurrentNews
 # from platforms.telegram import Telegram
 from analysis.sentiment import ContentAnalyzer
 from report.generator import ReportGenerator
@@ -25,11 +25,11 @@ async def analyze_keyword(keyword: str, config: Config) -> str:
         YouTube(config),
         StackExchange(config),
         GitHub(config),
+        HackerNews(config),
+        CurrentNews(config),
         # Reddit(config),
         # Mastodon(config),
-        HackerNews(config),
         # Wikipedia(config),
-        CurrentNews(config),
         # Telegram(config),
     ]
     
