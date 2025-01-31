@@ -21,7 +21,7 @@ class Config:
     MASTODON_ACCESS_TOKEN: str = "your_mastodon_access_token"
     MASTODON_INSTANCE: str = "mastodon.social"  # or your preferred instance
     HN_API_KEY: str = "your_hn_api_key"
-    OUTPUT_DIR: str = "output"
+    OUTPUT_DIR: str = "output/csv"
 
     WIKIPEDIA_ACCESS_TOKEN: str = os.environ.get('WIKIPEDIA_ACCESS_TOKEN')  # Optional
     WIKIPEDIA_CLIENT_SECRET: str = os.environ.get('WIKIPEDIA_CLIENT_SECRET')  # Optional

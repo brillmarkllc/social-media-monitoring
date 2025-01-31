@@ -5,3 +5,4 @@ telethon
 langchain
 langchain-openai
 google-api-python-client
+plotly

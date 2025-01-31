@@ -21,12 +21,12 @@ from report.generator import ReportGenerator
 async def analyze_keyword(keyword: str, config: Config) -> str:
     # Initialize platforms
     platforms = [
-        GoogleSearch(config),
+        GoogleSearch(config, max_results=10),
         YouTube(config),
         StackExchange(config),
-        GitHub(config),
-        HackerNews(config),
-        CurrentNews(config),
+        # GitHub(config),
+        # HackerNews(config),
+        # CurrentNews(config),
         # Reddit(config),
         # Mastodon(config),
         # Wikipedia(config),
@@ -58,24 +58,25 @@ async def analyze_keyword(keyword: str, config: Config) -> str:
     
     # Generate report files
     report_generator = ReportGenerator(config.OUTPUT_DIR)
-    report_files = report_generator.generate_report(keyword, platform_reports)
-    return report_files
+    updated_files = report_generator.generate_report(keyword, platform_reports)
+    return updated_files
 
 
 if __name__ == "__main__":
     config = Config()
-    keyword = "Machine Learning"
+    keyword = "CRO"
 
     animation: TermLoading = TermLoading()
-    animation.show('loading...', finish_message='\nFinished!✅\n', failed_message='\nFailed!❌\n')
+    animation.show('fetching...', finish_message='\nFinished!✅\n', failed_message='\nFailed!❌\n')
 
     try:
-        report_files = asyncio.run(analyze_keyword(keyword, config))
-        print(f"\nReport generated in directory: {report_files['report_directory']}")
-        print("\nPlatform CSV files:")
-        for platform, file_path in report_files['platform_csv_files'].items():
-            print(f"- {platform}: {file_path}")
-        print(f"\nSummary file: {report_files['summary_file']}")
+        updated_files = asyncio.run(analyze_keyword(keyword, config))
+        print("\nUpdated platform files:")
+        for platform, filepath in updated_files['platform_files'].items():
+            print(f"- {platform}: {filepath}")
+        print(f"\nUpdated summary file: {updated_files['summary_file']}")
+        animation.finished = True
 
     except Exception:
         traceback.print_exc()
+        animation.failed = True
